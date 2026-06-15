@@ -26,11 +26,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.taskvmg4.ui.navigation.TaskDetail
-import com.example.taskvmg2.ui.viewmodel.TaskViewModel
+import com.example.taskvmg4.ui.viewmodel.TaskListViewModel
 
 @Composable
-fun TaskListScreen(navController: NavController,
-                   viewModel: TaskViewModel = viewModel())
+fun TaskListScreen(
+    navController: NavController,
+    viewModel: TaskListViewModel = viewModel())
 {
 
     Scaffold(

@@ -1,9 +1,9 @@
-package com.example.taskvmg2.ui.viewmodel
+package com.example.taskvmg4.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.taskvmg2.ui.repository.TaskRepository
-import com.example.taskvmg2.ui.service.ApiResult
+import com.example.taskvmg4.ui.repository.TaskRepository
+import com.example.taskvmg4.ui.service.ApiResult
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch

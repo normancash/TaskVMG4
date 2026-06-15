@@ -1,6 +1,6 @@
-package com.example.taskvmg2.ui.viewmodel
+package com.example.taskvmg4.ui.viewmodel
 
-import com.example.taskvmg2.ui.model.Task
+import com.example.taskvmg4.ui.model.Task
 
 sealed interface TaskListState {
     data object Loading : TaskListState

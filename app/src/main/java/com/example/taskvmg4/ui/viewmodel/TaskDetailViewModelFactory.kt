@@ -4,12 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.taskvmg4.ui.repository.TaskRepository
 
-class TaskListViewModelFactory(
-    private val repository: TaskRepository
+class TaskDetailViewModelFactory(private val repository: TaskRepository
 ): ViewModelProvider.Factory {
 
-    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return TaskListViewModel(repository) as T
+        return TaskDetailViewModel(repository) as T
     }
 }
