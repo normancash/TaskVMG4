@@ -1,4 +1,4 @@
-package com.example.taskvmg2.ui.navigation
+package com.example.taskvmg4.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,7 +15,8 @@ fun AppNavigation(modifier: Modifier)
     val navController = rememberNavController()
 
     NavHost(navController = navController
-        , startDestination = TaskList)
+        , startDestination = TaskList
+    )
     {
         composable<TaskList>
         {

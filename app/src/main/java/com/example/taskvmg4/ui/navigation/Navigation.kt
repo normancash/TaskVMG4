@@ -1,4 +1,4 @@
-package com.example.taskvmg2.ui.navigation
+package com.example.taskvmg4.ui.navigation
 
 import kotlinx.serialization.Serializable
 
