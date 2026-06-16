@@ -136,7 +136,8 @@ fun TaskDetailScreen(
                                 Task(
                                     id = viewModel.id.toInt(),
                                     title = viewModel.title,
-                                    completed = viewModel.completed
+                                    completed = viewModel.completed,
+                                    description = ""
                                 )
                             )
                             navController.popBackStack()
