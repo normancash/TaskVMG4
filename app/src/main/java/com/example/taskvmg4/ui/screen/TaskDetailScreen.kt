@@ -134,7 +134,7 @@ fun TaskDetailScreen(
                        onClick = {
                             viewModel.addTask(
                                 Task(
-                                    id = viewModel.id.toInt(),
+                                    id = viewModel.id,
                                     title = viewModel.title,
                                     completed = viewModel.completed,
                                     description = ""
