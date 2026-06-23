@@ -42,7 +42,7 @@ fun TaskListScreen(
         modifier = Modifier.fillMaxSize()
        ,floatingActionButton = {
            FloatingActionButton(onClick = {
-               navController.navigate(TaskDetail(taskId = 0))
+               navController.navigate(TaskDetail(taskId = "0"))
            }) {
                Icon(
                    imageVector = Icons.Default.Add,
@@ -89,6 +89,9 @@ fun TaskListScreen(
                             Card(
                                 modifier = Modifier.padding(vertical = 8.dp)
                                     .fillMaxWidth()
+                                ,onClick = {
+                                    navController.navigate(TaskDetail(taskId = currentState.tasks[it].id))
+                                }
                             )
                             {
                                 Row(
