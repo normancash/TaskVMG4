@@ -13,7 +13,7 @@ interface TaskService {
     suspend fun getTasks(): Response<List<Task>>
 
     @GET("task/getId/{id}")
-    suspend fun getTaskById(@Path("id") id: Int):
+    suspend fun getTaskById(@Path("id") id: String):
             Response<Task>
 
     @POST("task/save")

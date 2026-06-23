@@ -25,6 +25,8 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -32,15 +34,19 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.taskvmg4.ui.model.Task
 import com.example.taskvmg2.ui.viewmodel.TaskViewModel
+import com.example.taskvmg4.ui.viewmodel.TaskDetailViewModel
 
 @Composable
 fun TaskDetailScreen(
     navController: NavController,
-    taskId: Int?,
-    viewModel: TaskViewModel = viewModel()
+    taskId: String,
+    viewModel: TaskDetailViewModel
 ) {
+    val state by viewModel.state.collectAsState()
+
+
     LaunchedEffect(taskId) {
-        viewModel.loadTask(taskId)
+        viewModel.findById(taskId)
     }
     Column(
         modifier = Modifier
@@ -132,14 +138,7 @@ fun TaskDetailScreen(
                     Button(
                        modifier = Modifier.weight(1f),
                        onClick = {
-                            viewModel.addTask(
-                                Task(
-                                    id = viewModel.id,
-                                    title = viewModel.title,
-                                    completed = viewModel.completed,
-                                    description = ""
-                                )
-                            )
+                            viewModel.save()
                             navController.popBackStack()
                         }
                     ) {

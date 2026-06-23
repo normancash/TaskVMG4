@@ -1,5 +1,8 @@
 package com.example.taskvmg4.ui.viewmodel
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.taskvmg4.ui.repository.TaskRepository
@@ -18,7 +21,47 @@ class TaskDetailViewModel(
 
     val state = _state.asStateFlow()
 
-    fun findById(id: Int) {
+    var id by mutableStateOf("")
+        private set
+    var title by mutableStateOf("")
+        private set
+    var completed by mutableStateOf(false)
+        private set
+    var description by mutableStateOf("")
+        private set
+
+    fun onIdChange(value: String) {
+        id = value
+    }
+    fun onTitleChange(value: String) {
+        title = value
+    }
+    fun onCompletedChange(value: Boolean) {
+        completed = value
+    }
+    fun onDescriptionChange(value: String) {
+        description = value
+    }
+
+    fun clearForm() {
+        id = ""
+        title = ""
+        completed = false
+        description = ""
+    }
+    fun loadForm(task:Task){
+        id = task.id
+        title = task.title
+        completed = task.completed
+        description = task.description
+    }
+
+    fun findById(id: String) {
+        if (id == "0") {
+            clearForm()
+            return
+        }
+        _state.value = TaskDetailState.Loading
         viewModelScope.launch {
             when (val result = repository.findById(id))
             {
@@ -32,7 +75,14 @@ class TaskDetailViewModel(
         }
     }
 
-    fun save(task: Task) {
+    fun save() {
+        val task = Task(
+            id = id,
+            title = title,
+            completed = completed,
+            description = description
+        )
+        _state.value = TaskDetailState.Loading
         viewModelScope.launch {
             when (val result = repository.save(task)) {
                 is ApiResult.Success -> {
